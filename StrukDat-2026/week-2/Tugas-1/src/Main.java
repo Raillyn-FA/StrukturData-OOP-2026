@@ -9,6 +9,8 @@ class DataKue {
     public void setHarga(double hargaBaru) {
         if (hargaBaru > 0) {
             this.harga = hargaBaru;
+        } else {
+            System.out.println("Harga kue tidak valid!");
         }
     }
 }
