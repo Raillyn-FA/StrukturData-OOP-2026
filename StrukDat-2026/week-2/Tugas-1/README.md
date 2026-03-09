@@ -12,7 +12,7 @@ Encapsulation adalah konsep membungkus data dan metode dalam satu class serta me
 
 Kita membungkus data "harga" agar tidak bisa diubah sembarangan menjadi minus atau nol oleh pihak luar.
 ```java
-class Kue {
+class DataKue {
     private double harga; // Data disembunyikan
 
     // Getter untuk melihat harga
@@ -47,19 +47,30 @@ abstract class ResepKue {
 ## 3. Inheritance (Pewarisan)
 Inheritance adalah konsep pewarisan dimana sebuah class dapat mewarisi atribut dan metode dari class lain sehingga mengurangi penulisan kode yang berulang.
 
-Kelas "Donat" dan "Cupcake" mewarisi kemampuan dasar dari "ResepKue". Kita tidak perlu menulis ulang fungsi "panggang()".
+Kelas "Chocolate" dan "Cheese" mewarisi kemampuan dasar dari "Toppings". Kita tidak perlu menulis ulang fungsi "panggang()".
 ```java
-class Donat extends ResepKue {
+// Pilar: INHERITANCE (Turunan dari Toppings)
+class Chocolate extends Toppings {
+
+    public Chocolate() {
+        this.namaKue = "Kue Cokelat";
+    }
+    // Pilar: POLYMORPHISM
     @Override
     void beriTopping() {
-        System.out.println("Menambahkan topping: Meises Cokelat");
+        System.out.println("asil: Menambahkan topping Selai Cokelat dan Choco Chips.");
     }
 }
+// Pilar: INHERITANCE
+class Cheese extends ResepKue {
 
-class Cupcake extends ResepKue {
+    public Chees() {
+        this.namaKue = "Kue Keju";
+    }
+    // Pillar: POLYMORPHISM
     @Override
     void beriTopping() {
-        System.out.println("Menambahkan topping: Buttercream Strawberry");
+        System.out.println("Hasil: Menambahkan topping Keju Parut dan Cream Cheese.");
     }
 }
 ```
@@ -69,23 +80,25 @@ Polymorphism adalah kemampuan suatu method atau objek untuk memiliki banyak bent
 
 Satu perintah beriTopping() bisa menghasilkan hasil yang berbeda tergantung objek kue mana yang dipanggil.
 ```java
-public class TokoKue {
+public class Main {
     public static void main(String[] args) {
         // Encapsulation
-        Kue k = new Kue();
-        k.setHarga(15000);
-        System.out.println("Harga Kue: Rp" + k.getHarga());
+        DataKue info = new DataKue();
+        info.setHarga(15000);
+        System.out.println("Harga Kue: Rp" + info.getHarga());
+        System.out.println("-----------------------------------");
 
-        // Polymorphism: Satu tipe (ResepKue), banyak bentuk (Donat/Cupcake)
-        ResepKue kue1 = new Donat();
-        ResepKue kue2 = new Cupcake();
+        // Eksekusi Polymorphim
+        Toppings kue1 = new Chocolate();
+        Toppings kue2 = new Cheese();
 
-        System.out.println("\n--- Proses Produksi ---");
         kue1.panggang();
-        kue1.beriTopping(); // Output: Meises Cokelat
+        kue1.beriTopping(); // Output: Chocolate
+
+        System.out.println();
 
         kue2.panggang();
-        kue2.beriTopping(); // Output: Buttercream Strawberry
+        kue2.beriTopping(); // Output: Cheese
     }
 }
 ```
