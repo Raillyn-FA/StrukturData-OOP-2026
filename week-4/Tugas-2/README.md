@@ -46,3 +46,98 @@ class Cake {
     }
 }
 ```
+### Topping.java
+```java
+abstract class Topping {
+    protected String name;
+    public abstract double getPrice();
+}
+```
+### Cheese.java
+```java
+class Cheese extends Topping {
+    public Cheese() {
+        name = "Cheese";
+    }
+    public double getPrice() {
+        return 5000;
+    }
+}
+```
+### Chocolate.java
+```java
+class Chocolate extends Topping {
+    public Chocolate() {
+        name = "Chocolate";
+    }
+    public double getPrice() {
+        return 6000;
+    }
+}
+```
+### Oreo.java
+```java
+class Oreo extends Topping {
+    public Oreo() {
+        name = "Oreo";
+    }
+    public double getPrice() {
+        return 7000;
+    }
+}
+```
+### Order.java
+```java
+import java.util.*;
+
+class Order {
+    private int id;
+    private List<Cake> cakes = new ArrayList<>();
+
+    public Order(int id) {
+        this.id = id;
+    }
+    public void addCake(Cake c) {
+        cakes.add(c);
+    }
+    public double calculateTotal() {
+        double total = 0;
+        for (Cake c : cakes) {
+            total += c.calculatePrice();
+        }
+        return total;
+    }
+    public void showOrder() {
+        System.out.println("Order #" + id);
+        for (Cake c : cakes) {
+            c.showCake();
+            System.out.println();
+        }
+        System.out.println("TOTAL: Rp" + calculateTotal());
+    }
+}
+```
+### Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        Order order = new Order(1);
+
+        Cake cake1 = new Cake("Chocolate Cake", 30000);
+        cake1.addTopping(new Cheese());
+        cake1.addTopping(new Oreo());
+
+        Cake cake2 = new Cake("Vanilla Cake", 25000);
+        cake2.addTopping(new Chocolate());
+
+        order.addCake(cake1);
+        order.addCake(cake2);
+
+        order.showOrder();
+    }
+}
+```
+Note: Pastikan semua file dalam satu folder yang sama.
+
+## Screenshot Output
+<img width="1047" height="322" alt="image" src="https://github.com/user-attachments/assets/900ae665-0a43-4b3c-889c-9584f9e8dc78" />
