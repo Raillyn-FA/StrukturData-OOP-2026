@@ -141,3 +141,40 @@ Note: Pastikan semua file dalam satu folder yang sama.
 
 ## Screenshot Output
 <img width="1047" height="322" alt="image" src="https://github.com/user-attachments/assets/900ae665-0a43-4b3c-889c-9584f9e8dc78" />
+## Penjelasan prinsip-prinsip OOP apa saja yang diterapkan
+### 1. Encapsulation
+Data penting seperti `name`, `basePrice`, dan `toppings` disimpan dalam atribut `private` pada class `Cake`, serta `cakes` pada class `Order`.
+
+Akses terhadap data dilakukan melalui method seperti:
+* `addTopping()`
+* `calculatePrice()`
+* `calculateTotal()`
+
+Hal ini bertujuan untuk menjaga keamanan data dan mencegah akses langsung dari luar class.
+### 2. Abstraction
+Class `Topping` dibuat sebagai **abstract class** yang merepresentasikan konsep umum topping.
+
+Implementasi detail dari method `getPrice()` diturunkan ke subclass seperti:
+* `Cheese`
+* `Oreo`
+* `Chocolate`
+### 3. Inheritance
+Program menggunakan konsep pewarisan (inheritance), dimana:
+* `Cheese` mewarisi `Topping`
+* `Oreo` mewarisi `Topping`
+* `Chocolate` mewarisi `Topping`
+Dengan inheritance, atribut dan method umum tidak perlu ditulis ulang di setiap class.
+### 4. Polymorphism
+Method `getPrice()` pada class `Topping` diimplementasikan secara berbeda pada setiap subclass.
+Contoh:
+* `Cheese` → Rp5000
+* `Oreo` → Rp7000
+* `Chocolate` → Rp6000
+
+Polymorphism terjadi saat method dipanggil dalam loop:
+```java
+for (Topping t : toppings) {
+    total += t.getPrice();
+}
+```
+Meskipun menggunakan satu method yang sama (`getPrice()`), hasil yang diperoleh berbeda tergantung jenis objek topping.
