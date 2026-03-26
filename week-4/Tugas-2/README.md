@@ -8,3 +8,41 @@ Sistem ini dibuat untuk membantu toko kue dalam mengelola pesanan kue yang memil
 
 ## Class Diagram
 <img width="3386" height="4610" alt="Cake Order Pricing Framework-2026-03-26-060315" src="https://github.com/user-attachments/assets/8923a644-1340-4793-a451-0882d20b8f9c" />
+
+## Kode Program Java
+Berikut adalah sources code yang digunakan dalam sistem ini.
+### Cake.java
+```java
+import java.util.*;
+
+class Cake {
+    private String name;
+    private double basePrice;
+    private List<Topping> toppings = new ArrayList<>();
+
+    public Cake(String name, double basePrice) {
+        this.name = name;
+        this.basePrice = basePrice;
+    }
+
+    public void addTopping(Topping t) {
+        toppings.add(t);
+    }
+
+    public double calculatePrice() {
+        double total = basePrice;
+        for (Topping t : toppings) {
+            total += t.getPrice();
+        }
+        return total;
+    }
+
+    public void showCake() {
+        System.out.println("Cake: " + name);
+        for (Topping t : toppings) {
+            System.out.println("- " + t.name);
+        }
+        System.out.println("Price: Rp" + calculatePrice());
+    }
+}
+```
