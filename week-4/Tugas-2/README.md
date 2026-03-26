@@ -141,7 +141,9 @@ Note: Pastikan semua file dalam satu folder yang sama.
 
 ## Screenshot Output
 <img width="1047" height="322" alt="image" src="https://github.com/user-attachments/assets/900ae665-0a43-4b3c-889c-9584f9e8dc78" />
+
 ## Penjelasan prinsip-prinsip OOP apa saja yang diterapkan
+
 ### 1. Encapsulation
 Data penting seperti `name`, `basePrice`, dan `toppings` disimpan dalam atribut `private` pada class `Cake`, serta `cakes` pada class `Order`.
 
