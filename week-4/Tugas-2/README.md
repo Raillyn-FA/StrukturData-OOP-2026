@@ -180,3 +180,9 @@ for (Topping t : toppings) {
 }
 ```
 Meskipun menggunakan satu method yang sama (`getPrice()`), hasil yang diperoleh berbeda tergantung jenis objek topping.
+
+## Penjelasan keunikan yang membedakan dengan individu lain
+Program ini memiliki keunikan pada sistem custom kue berbasis topping dinamis, dimana:
+* Satu kue dapat memiliki lebih dari satu topping.
+* Setiap topping memiliki perhitungan harga berbeda.
+* Struktur program dibuat modular.
